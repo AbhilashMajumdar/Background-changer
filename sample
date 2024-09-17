@@ -1,0 +1,32 @@
+{!(useMockRoutes && useLocalCaas) && type !== '' && (
+          <>
+            <Row>
+              <Select name="environment" id="jwt_qaEnv" label="Environment" width="100%" required>
+                <option />
+                {props.cqItems && props.cqItems.environments && props.cqItems.environments.map((env) => <option key={env.name}>{env.name}</option>)}
+              </Select>
+            </Row>
+            <Row>
+              <TextField className="contains-PII" name="sessionID" id="jwt_sessionID" label="Session ID" required />
+            </Row>
+            <Row>
+              <TextField className="contains-PII" name="flowType" id="jwt_flowType" label="Flow Type" required />
+            </Row>
+            <Row>
+              <TextField className="contains-PII" name="cbandQual" id="jwt_cbandQual" label="CBand Qual" required />
+            </Row>
+            <Row>
+              <TextField className="contains-PII" name="lqResponse" id="jwt_lqResponse" label="LQResponse" required />
+            </Row>
+            {type === 'AAL' && (
+              <>
+                <Row>
+                  <TextField className="contains-PII" name="mobile" id="jwt_mtn" label="MTN" required />
+                </Row>
+                <Row>
+                  <TextField className="contains-PII" name="vzwAccountNumber" id="jwt_vzwAccountNumber" label="Account Number" required />
+                </Row>
+              </>
+            )}
+          </>
+        )}
