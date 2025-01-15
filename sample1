@@ -1,14 +1,4 @@
-const mtnListDetails = [{
-      mtn: "5185735376",
-      VZW: "Y",
-      consent: true
-      },
-      {
-      mtn: "9087654321",
-      VZW: "N",
-      consent: true
-      }];
-
+I have this verifyMtnList -
 const verifyMtnList = {
   "data": {
     "wireless": false,
@@ -37,3 +27,17 @@ const verifyMtnList = {
     }
   }
 }
+
+I nned to construct mtnListDetails using the above verifyMtnList by itearting verifyMtnList?.data?.validatedMtns?.Success - 
+const mtnListDetails = [{
+      mtn: "5185735376",
+      VZW: "Y",
+      consent: true
+      },
+      {
+      mtn: "9087654321",
+      VZW: "N",
+      consent: true
+      }];
+
+
