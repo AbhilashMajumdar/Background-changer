@@ -1,0 +1,39 @@
+const mtnListDetails = [{
+      mtn: "5185735376",
+      VZW: "Y",
+      consent: true
+      },
+      {
+      mtn: "9087654321",
+      VZW: "N",
+      consent: true
+      }];
+
+const verifyMtnList = {
+  "data": {
+    "wireless": false,
+    "vzSpid": false,
+    "validatedMtns": {
+      "Success": [
+        {
+          "mtn": "5183695577",
+          "mtnType": "vzw"
+        },
+        {
+          "mtn": "5862085173",
+          "mtnType": "vzw"
+        },
+        {
+          "mtn": "1234567809",
+          "mtnType": "nonvzw"
+        }
+      ],
+      "Failure": [
+        {
+          "mtn": "1234567890",
+          "mtnType": "nonvzw"
+        }
+      ]
+    }
+  }
+}
