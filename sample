@@ -1,0 +1,50 @@
+<RadioBox
+                text={<span>
+                    {option.setupName} 
+                    {
+                      this.props.selectedSetup === option.type && this.props.fwaTechRecommenderCBandSOEDigitalFFlag && (
+                        <div style={{float: "right"}}>
+                          <Badge
+                            fillColor="yellow">Recommended
+                          </Badge>
+                          <Tooltip 
+                            title="Price Details"
+                            size="small"
+                            surface="light">
+                            $24.99/mo $0 down for qualified customers
+                          </Tooltip>
+                        </div>
+                      )
+                    }
+                  </span>}
+                subtext={
+                  <Body size="small" className="relative" primitive="span">
+                    {limitedTimeOffer && (
+                      <Row>
+                        <Col className="textDecoration fontWight400 noRightPad">{optionDetails?.setupChargesStrikeoff}</Col>
+                        <Col className="fontWight400">{optionDetails?.setupChargesLimited}</Col>
+                      </Row>
+                    )}
+                    {getSetupCharges()}
+                    {!limitedTimeOffer && (
+                      <div className="absolute" style={{ bottom: '12px' }}>
+                        {parse(optionDetails?.setupDesc || '')}
+                      </div>
+                    )}
+                    {limitedTimeOffer && (
+                      <div className="absolute" style={{ bottom: '12px' }}>
+                        {parse(optionDetails?.taxesLimitedOffer || '')}
+                      </div>
+                    )}
+                  </Body>
+                }
+                ariaLabel={`${optionDetails?.ariaLabelValue?.replace(/<[^>]*>?/gm, '')}} ${ariaLabelDesc}`}
+                selected={this.state.selectedSetupOption === option.type}
+                data-analyticstrack={`5G-SetupOption- ${option.setupName}`}
+                name="setup_option"
+                value={option.type}
+                inputId={option.type}
+                onChange={(e) => this.handleOptionChange(e)}
+                height="95px"
+                width="100%"
+              />
