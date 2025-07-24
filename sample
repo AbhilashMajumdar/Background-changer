@@ -14,3 +14,4 @@ this.props.fwaTechRecommenderCBandSOEDigitalFFlag && String(this.props.techRecom
         ],
 
 can you please rewrite the above sort function we are getting bugs while raising the merge request.
+bug - The sorting logic in components/DeviceSetup/deviceSetupOptions.js:524 is implemented incorrectly. The Array.prototype.sort method is used with a non-standard, single-argument callback function, but it expects a compare function that takes two arguments (a, b). This may lead to unpredictable sorting behavior. Furthermore, the logic uses indexOf('Self') > 0, which will fail if the bundle name starts with 'Self' (returning an index of 0).
