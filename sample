@@ -1,17 +1,12 @@
-this.props.fwaTechRecommenderCBandSOEDigitalFFlag && String(this.props.techRecommendation).toLowerCase() === "high" ?
-      cartEligibleBundles.sort((x) => (x.bundleName.indexOf('Self') > 0 ? 1 : -1)) :
-      cartEligibleBundles.sort((x) => (x.bundleName.indexOf('Pro') > 0 ? 1 : -1));
-
-"cartEligibleBundles": [
-            {
-                "bundleName": "5GHomeCBandSelfSetup",
-                "id": "26730007"
-            },
-            {
-                "bundleName": "5GHomeCBandProfSetup",
-                "id": "26730003"
-            }
-        ],
-
-can you please rewrite the above sort function we are getting bugs while raising the merge request.
-bug - The sorting logic in components/DeviceSetup/deviceSetupOptions.js:524 is implemented incorrectly. The Array.prototype.sort method is used with a non-standard, single-argument callback function, but it expects a compare function that takes two arguments (a, b). This may lead to unpredictable sorting behavior. Furthermore, the logic uses indexOf('Self') > 0, which will fail if the bundle name starts with 'Self' (returning an index of 0).
+const sortedBundles = this.props.fwaTechRecommenderCBandSOEDigitalFFlag &&
+  String(this.props.techRecommendation).toLowerCase() === "high"
+  ? cartEligibleBundles.sort((a, b) => {
+      const aHasSelf = a.bundleName.includes('Self');
+      const bHasSelf = b.bundleName.includes('Self');
+      return aHasSelf === bHasSelf ? 0 : aHasSelf ? -1 : 1;
+    })
+  : cartEligibleBundles.sort((a, b) => {
+      const aHasPro = a.bundleName.includes('Pro');
+      const bHasPro = b.bundleName.includes('Pro');
+      return aHasPro === bHasPro ? 0 : aHasPro ? -1 : 1;
+    });
